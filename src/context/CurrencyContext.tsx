@@ -12,7 +12,7 @@ export interface Currency {
 }
 
 // Use the imported data
-const { currencies: currenciesList, exchangeRates: exchangeRatesData } = currencyConfigData;
+const { currencies: currenciesList, exchangeRates: exchangeRatesData, defaultCurrencyCode } = currencyConfigData;
 
 interface CurrencyContextType {
   selectedCurrency: string;
@@ -28,7 +28,7 @@ interface CurrencyProviderProps {
 }
 
 export function CurrencyProvider({ children }: CurrencyProviderProps) {
-  const [selectedCurrency, setSelectedCurrency] = useState<string>('USD');
+  const [selectedCurrency, setSelectedCurrency] = useState<string>(defaultCurrencyCode || 'USD');
 
   const contextValue = useMemo(() => ({
     selectedCurrency,

@@ -1,12 +1,13 @@
 
 {
+  "defaultCurrencyCode": "INR",
   "currencies": [
+    { "code": "INR", "name": "Indian Rupee", "symbol": "₹" },
     { "code": "USD", "name": "US Dollar", "symbol": "$" },
     { "code": "EUR", "name": "Euro", "symbol": "€" },
     { "code": "GBP", "name": "British Pound", "symbol": "£" },
     { "code": "JPY", "name": "Japanese Yen", "symbol": "¥" },
-    { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" },
-    { "code": "INR", "name": "Indian Rupee", "symbol": "₹" }
+    { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" }
   ],
   "exchangeRates": {
     "USD": 1,
@@ -14,7 +15,6 @@
     "GBP": 0.79,
     "JPY": 157.0,
     "CAD": 1.37,
-    "INR": 83.0 
+    "INR": 83.0
   }
 }
-
