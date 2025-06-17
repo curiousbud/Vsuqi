@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96.1%; /* #F5F5F5 Light Gray */
-    --foreground: 240 10% 20%; /* Dark, slightly bluish gray for text */
+    --background: 35 100% 94%; /* #FFF3E0 Very Light Peach/Cream */
+    --foreground: 10 29% 19%; /* #3E2723 Dark Brown */
 
-    --card: 0 0% 100%; /* White cards */
-    --card-foreground: 240 10% 20%;
+    --card: 34 100% 85%; /* #FFE0B2 Light Peach */
+    --card-foreground: 10 29% 19%; /* #3E2723 Dark Brown */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 20%;
+    --popover: 34 100% 85%; /* #FFE0B2 Light Peach */
+    --popover-foreground: 10 29% 19%; /* #3E2723 Dark Brown */
 
-    --primary: 240 67% 94.1%; /* #E6E6FA Soft Lavender (background of primary buttons/elements) */
-    --primary-foreground: 240 50% 40%; /* Dark lavender text for on-primary elements */
+    --primary: 30 56% 64%; /* #D4A373 Tan/Beige */
+    --primary-foreground: 10 29% 19%; /* #3E2723 Dark Brown */
 
-    --secondary: 300 20% 92%; /* Lighter Muted Rose or a complementary gray */
-    --secondary-foreground: 300 30% 40%; /* Darker Muted Rose text */
+    --secondary: 18 18% 47%; /* #8D6E63 Muted Brown */
+    --secondary-foreground: 35 100% 94%; /* #FFF3E0 Very Light Peach/Cream */
 
-    --muted: 0 0% 90%; /* Slightly darker gray than background for muted elements */
-    --muted-foreground: 0 0% 45%; /* Lighter gray text for muted text */
+    --muted: 34 100% 90%; /* Lighter version of #FFE0B2 */
+    --muted-foreground: 18 18% 37%; /* Darker Muted Brown for text on muted */
 
-    --accent: 300 26% 85.7%; /* #D8BFD8 Muted Rose (for hovers, highlights) */
-    --accent-foreground: 300 50% 35%; /* Dark Rose text for on-accent elements */
+    --accent: 18 18% 57%; /* A slightly lighter #8D6E63 for accent */
+    --accent-foreground: 35 100% 94%; /* #FFF3E0 Very Light Peach/Cream */
 
-    --destructive: 0 72% 51%; /* A clearer red for destructive actions */
+    --destructive: 0 72% 51%; /* Standard Red */
     --destructive-foreground: 0 0% 98%; /* Light text for destructive */
 
-    --border: 0 0% 89.8%; /* Light gray border */
-    --input: 0 0% 92%; /* Slightly off-white input background */
-    --ring: 240 60% 70%; /* A slightly darker, more saturated lavender for focus rings */
+    --border: 18 18% 80%; /* Light Muted Brown for border */
+    --input: 35 100% 90%; /* Similar to muted background */
+    --ring: 30 56% 54%; /* Darker Tan/Beige for focus rings */
 
     --radius: 0.5rem;
 
@@ -51,58 +51,62 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Sidebar colors - keeping existing, can be themed if sidebar is used */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors - these will also adopt the new theme */
+    --sidebar-background: 35 100% 97%; /* Even lighter than main background */
+    --sidebar-foreground: 10 29% 19%;
+    --sidebar-primary: 30 56% 64%;
+    --sidebar-primary-foreground: 10 29% 19%;
+    --sidebar-accent: 34 100% 90%;
+    --sidebar-accent-foreground: 10 29% 19%;
+    --sidebar-border: 18 18% 80%;
+    --sidebar-ring: 30 56% 54%;
   }
 
   .dark {
-    /* Keeping existing dark theme, can be refined later if needed */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 240 67% 94.1%;
-    --primary-foreground: 240 50% 30%;
-    --secondary: 300 20% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 300 26% 85.7%;
-    --accent-foreground: 300 50% 20%;
+    --background: 10 29% 10%; /* Very Dark Brown */
+    --foreground: 35 100% 94%; /* Very Light Peach/Cream */
+
+    --card: 10 29% 15%; /* Darker Brown for cards */
+    --card-foreground: 35 100% 94%;
+
+    --popover: 10 29% 15%;
+    --popover-foreground: 35 100% 94%;
+
+    --primary: 30 56% 70%; /* Lighter Tan/Beige for dark mode primary */
+    --primary-foreground: 10 29% 10%; /* Very Dark Brown for text on primary */
+
+    --secondary: 18 18% 37%; /* Darker Muted Brown */
+    --secondary-foreground: 35 100% 85%; /* Light Peach for text */
+
+    --muted: 10 29% 20%; /* Dark Brown for muted background */
+    --muted-foreground: 34 100% 75%; /* Muted Peach for text */
+
+    --accent: 30 56% 75%; /* Lighter Tan/Beige for accent */
+    --accent-foreground: 10 29% 10%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 14.9%;
-    --input: 240 5% 14.9%;
-    --ring: 240 60% 70%;
 
-    /* Update container padding for dark theme if desired, or they inherit from :root */
-    /* Example: if you want different padding in dark mode
-    --container-padding-default: 0.75rem;
-    --container-padding-sm: 1.25rem;
-    */
-
+    --border: 10 29% 25%; /* Slightly Lighter Dark Brown for border */
+    --input: 10 29% 20%; /* Dark Brown for input */
+    --ring: 30 56% 75%; /* Lighter Tan/Beige for focus rings */
+    
+    /* Chart colors - keeping existing, can be themed if charts are used */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Sidebar colors for dark theme */
+    --sidebar-background: 10 29% 8%; /* Darkest Brown */
+    --sidebar-foreground: 35 100% 94%;
+    --sidebar-primary: 30 56% 70%;
+    --sidebar-primary-foreground: 10 29% 10%;
+    --sidebar-accent: 10 29% 20%;
+    --sidebar-accent-foreground: 35 100% 94%;
+    --sidebar-border: 10 29% 25%;
+    --sidebar-ring: 30 56% 75%;
   }
 }
 
@@ -122,3 +126,4 @@
 .perspective-1000 {
   perspective: 1000px;
 }
+

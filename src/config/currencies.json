@@ -5,13 +5,16 @@
     { "code": "EUR", "name": "Euro", "symbol": "€" },
     { "code": "GBP", "name": "British Pound", "symbol": "£" },
     { "code": "JPY", "name": "Japanese Yen", "symbol": "¥" },
-    { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" }
+    { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" },
+    { "code": "INR", "name": "Indian Rupee", "symbol": "₹" }
   ],
   "exchangeRates": {
     "USD": 1,
     "EUR": 0.92,
     "GBP": 0.79,
     "JPY": 157.0,
-    "CAD": 1.37
+    "CAD": 1.37,
+    "INR": 83.0 
   }
 }
+
