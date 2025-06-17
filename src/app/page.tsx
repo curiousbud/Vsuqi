@@ -9,14 +9,27 @@ import siteConfig from '@/config/site.json';
 export default function HomePage() {
   const featuredProducts = getAllProducts().slice(0, 3); // Show first 3 products as featured
 
+  const heroSectionStyle = siteConfig.heroImageUrl 
+    ? { backgroundImage: `url('${siteConfig.heroImageUrl}')` } 
+    : {};
+  
+  const heroSectionClasses = `text-center py-16 md:py-24 rounded-xl shadow-sm ${
+    siteConfig.heroImageUrl 
+      ? 'bg-cover bg-center' 
+      : 'bg-gradient-to-br from-primary/30 via-background to-background'
+  }`;
+
   return (
     <div className="space-y-16">
-      <section className="text-center py-16 md:py-24 bg-gradient-to-br from-primary/30 via-background to-background rounded-xl shadow-sm">
-        <div className="container">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground font-headline">
+      <section 
+        className={heroSectionClasses}
+        style={heroSectionStyle}
+      >
+        <div className={`container ${siteConfig.heroImageUrl ? 'bg-black/30 backdrop-blur-sm py-8 rounded-md' : ''}`}>
+          <h1 className={`text-4xl md:text-5xl font-bold mb-6 font-headline ${siteConfig.heroImageUrl ? 'text-white' : 'text-foreground'}`}>
             Welcome to {siteConfig.companyName}
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${siteConfig.heroImageUrl ? 'text-gray-200' : 'text-muted-foreground'}`}>
             Discover a curated collection of modern and unique products designed to enhance your lifestyle.
           </p>
           <Link href="/products" passHref>

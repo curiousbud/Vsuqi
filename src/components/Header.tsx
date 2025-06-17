@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingBag, Menu, X, Coins } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -62,8 +63,21 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.companyName} Home`}>
-          <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
-          <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
+          {siteConfig.logoUrl ? (
+            <Image 
+              src={siteConfig.logoUrl} 
+              alt={siteConfig.companyLogoAltText || siteConfig.companyName} 
+              width={150} // Provide an appropriate width for your logo
+              height={40} // Provide an appropriate height for your logo
+              className="object-contain h-10 w-auto" // Adjust styling as needed
+              priority 
+            />
+          ) : (
+            <>
+              <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
+              <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
+            </>
+          )}
         </Link>
         
         <div className="flex items-center space-x-1">
@@ -87,8 +101,20 @@ export default function Header() {
                 <div className="flex flex-col space-y-4">
                   <div className="flex justify-between items-center mb-4">
                      <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.companyName} Home`}>
-                       <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
-                       <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
+                      {siteConfig.logoUrl ? (
+                        <Image 
+                          src={siteConfig.logoUrl} 
+                          alt={siteConfig.companyLogoAltText || siteConfig.companyName}
+                          width={120}
+                          height={32}
+                          className="object-contain h-8 w-auto"
+                        />
+                      ) : (
+                        <>
+                          <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
+                           <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
+                        </>
+                      )}
                      </Link>
                     <SheetClose asChild>
                        <Button variant="ghost" size="icon" aria-label="Close menu">

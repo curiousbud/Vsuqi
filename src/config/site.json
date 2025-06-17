@@ -1,6 +1,9 @@
 
 {
   "companyName": "Vsuqi",
+  "logoUrl": "https://placehold.co/150x50.png?text=Vsuqi+Logo",
+  "companyLogoAltText": "Vsuqi Company Logo",
+  "heroImageUrl": "https://placehold.co/1600x900.png?text=Modern+Lifestyle",
   "contact": {
     "email": "support@vsuqi.com",
     "phone": "+1 (234) 567-890",
@@ -17,5 +20,9 @@
   "meta": {
     "title": "Vsuqi - Modern E-commerce",
     "description": "Discover unique products at Vsuqi."
+  },
+  "comments": {
+    "logoUrl": "Provide a direct URL to your logo image. If using an external domain (not placehold.co), add its hostname to next.config.ts images.remotePatterns.",
+    "heroImageUrl": "Provide a direct URL for the hero section background image. If using an external domain, add its hostname to next.config.ts images.remotePatterns."
   }
 }
