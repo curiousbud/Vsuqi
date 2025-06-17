@@ -1,10 +1,15 @@
 
+'use client';
+
 import Link from 'next/link';
 import { ShoppingBag, Menu, X, Coins } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import CurrencyConverterWidget from './CurrencyConverterWidget';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useContext } from 'react';
+import { CurrencyContext } from '@/context/CurrencyContext';
+import type { Currency } from '@/context/CurrencyContext';
+
 
 const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
   <>
@@ -21,6 +26,37 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
 );
 
 export default function Header() {
+  const currencyContext = useContext(CurrencyContext);
+
+  if (!currencyContext) {
+    return null; // Or a loading/error state
+  }
+
+  const { selectedCurrency, setSelectedCurrency, currencies } = currencyContext;
+
+  const handleCurrencyChange = (currencyCode: string) => {
+    setSelectedCurrency(currencyCode);
+  };
+
+  const CurrencySelector = ({ inSheet = false }: { inSheet?: boolean }) => (
+    <Select value={selectedCurrency} onValueChange={handleCurrencyChange}>
+      <SelectTrigger 
+        className={inSheet ? "w-full justify-start" : "w-auto min-w-[80px]"}
+        aria-label="Select currency"
+      >
+        <Coins className={inSheet ? "mr-2 h-4 w-4" : "h-5 w-5 md:mr-1"} />
+        <SelectValue placeholder="Currency" />
+      </SelectTrigger>
+      <SelectContent>
+        {currencies.map((currency: Currency) => (
+          <SelectItem key={currency.code} value={currency.code}>
+            {currency.code} ({currency.symbol})
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -29,23 +65,17 @@ export default function Header() {
           <span className="font-bold text-xl text-foreground">Vsuqi</span>
         </Link>
         
-        <div className="flex items-center space-x-1"> {/* Reduced space for tighter grouping */}
-          <nav className="hidden md:flex items-center space-x-1"> {/* Reduced space for tighter grouping */}
+        <div className="flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1">
             <NavLinks />
           </nav>
 
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open currency converter" className="hidden md:inline-flex"> {/* Desktop only for now */}
-                <Coins className="h-5 w-5" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0 mt-2 mr-2"> {/* Added margin for better positioning */}
-              <CurrencyConverterWidget />
-            </PopoverContent>
-          </Popover>
+          <div className="hidden md:flex items-center ml-2"> {/* Desktop currency selector */}
+             <CurrencySelector />
+          </div>
 
-          <div className="md:hidden">
+
+          <div className="md:hidden"> {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Open menu">
@@ -66,20 +96,9 @@ export default function Header() {
                     </SheetClose>
                   </div>
                   <NavLinks isMobile />
-                  {/* Currency converter could be added here for mobile if desired */}
                   <div className="mt-4 border-t pt-4">
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start">
-                          <Coins className="mr-2 h-4 w-4" /> Currency Converter
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0 mt-1">
-                         <CurrencyConverterWidget />
-                      </PopoverContent>
-                    </Popover>
+                     <CurrencySelector inSheet={true} />
                   </div>
-
                 </div>
               </SheetContent>
             </Sheet>

@@ -1,10 +1,13 @@
+
 import Image from 'next/image';
-import { getProductBySlug, getAllProducts, Product } from '@/lib/products';
+import { getProductBySlug, getAllProducts } from '@/lib/products';
+import type { Product } from '@/lib/products';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
+import ProductPriceDisplay from '@/components/ProductPriceDisplay';
 import {
   Carousel,
   CarouselContent,
@@ -95,7 +98,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             <Badge variant="outline" className="text-sm">{product.category}</Badge>
           )}
           <h1 className="text-3xl md:text-4xl font-bold text-foreground font-headline">{product.name}</h1>
-          <p className="text-2xl font-semibold text-primary-foreground">${product.price.toFixed(2)}</p>
+          <ProductPriceDisplay priceUSD={product.price} className="text-2xl font-semibold text-primary-foreground" />
           
           <Separator />
 

@@ -1,9 +1,11 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/lib/products';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import ProductPriceDisplay from './ProductPriceDisplay';
 
 interface ProductCardProps {
   product: Product;
@@ -32,7 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{product.shortDescription}</p>
         </CardContent>
         <CardFooter className="p-4 flex justify-between items-center border-t">
-          <p className="text-lg font-bold text-primary-foreground">${product.price.toFixed(2)}</p>
+          <ProductPriceDisplay priceUSD={product.price} className="text-lg font-bold text-primary-foreground" />
           <Link href={`/products/${product.slug}`} passHref>
             <Button variant="outline" size="sm">
               View Details <ArrowRight className="ml-2 h-4 w-4" />
