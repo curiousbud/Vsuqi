@@ -59,7 +59,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold mb-4 text-secondary-foreground font-headline">Stay Connected</h2>
             <p className="text-muted-foreground mb-6">Follow us on social media and subscribe to our newsletter for the latest updates and offers.</p>
             <Link href="/contact" passHref>
-                <Button variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                     Contact Us
                 </Button>
             </Link>
