@@ -1,3 +1,4 @@
+
 import type {Config}from 'tailwindcss';
 
 export default {
@@ -18,15 +19,18 @@ export default {
         xl: 'var(--container-padding-xl)',
         '2xl': 'var(--container-padding-2xl)',
       },
-      screens: { // These will be merged with Tailwind's default screens.
-                 // Your custom '2xl' will override Tailwind's default '2xl' if it exists.
-        "2xl": "1400px",
+      screens: {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1536px", // Dior uses large screens well
       },
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'], // Clean sans-serif for body/UI
+        serif: ['EB Garamond', 'serif'], // Elegant serif for headings
         code: ['monospace'],
       },
       colors: {
@@ -83,8 +87,8 @@ export default {
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 1px)', // Sharper edges
+        sm: 'calc(var(--radius) - 2px)',
       },
       keyframes: {
         'accordion-down': {
@@ -103,10 +107,20 @@ export default {
             height: '0',
           },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'fadeIn': 'fadeIn 0.5s ease-out forwards',
+        'fadeInUp': 'fadeInUp 0.7s ease-out forwards',
       },
     },
   },

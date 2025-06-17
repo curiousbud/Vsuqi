@@ -2,10 +2,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/lib/products';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import ProductPriceDisplay from './ProductPriceDisplay';
+import { Button } from './ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -13,35 +12,37 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="group perspective-1000 transform-style-3d h-full flex flex-col">
-      <Card className="bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-out transform group-hover:[transform:rotateX(2deg)_rotateY(4deg)_scale(1.03)] flex flex-col flex-grow backface-hidden">
-        <CardHeader className="p-0 relative">
-          <Link href={`/products/${product.slug}`} className="block aspect-[4/3] overflow-hidden rounded-t-lg">
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={600}
-              height={400}
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-              data-ai-hint={product.dataAiHint || "product image"}
-            />
-          </Link>
-        </CardHeader>
-        <CardContent className="p-4 flex-grow">
-          <Link href={`/products/${product.slug}`}>
-            <CardTitle className="text-lg font-semibold mb-1 hover:text-primary-foreground transition-colors">{product.name}</CardTitle>
-          </Link>
-          <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{product.shortDescription}</p>
-        </CardContent>
-        <CardFooter className="p-4 flex justify-between items-center border-t">
-          <ProductPriceDisplay priceUSD={product.price} className="text-lg font-bold text-primary-foreground" />
-          <Link href={`/products/${product.slug}`} passHref>
-            <Button variant="outline" size="sm">
-              View Details <ArrowRight className="ml-2 h-4 w-4" />
+    <div className="group relative flex flex-col h-full overflow-hidden">
+      <Link href={`/products/${product.slug}`} className="block">
+        <div className="aspect-[3/4] bg-secondary/30 relative overflow-hidden">
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
+            data-ai-hint={product.dataAiHint || "fashion product"}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      </Link>
+      <div className="pt-4 text-center flex flex-col flex-grow">
+        <Link href={`/products/${product.slug}`}>
+          <h3 className="font-serif text-lg md:text-xl font-medium text-foreground mb-1 hover:text-foreground/70 transition-colors truncate">
+            {product.name}
+          </h3>
+        </Link>
+        <p className="text-sm text-muted-foreground mb-2 line-clamp-2 h-10">
+          {product.shortDescription}
+        </p>
+        <ProductPriceDisplay priceUSD={product.price} className="text-base font-medium text-foreground my-2" />
+        <div className="mt-auto pt-2">
+           <Link href={`/products/${product.slug}`} passHref>
+            <Button variant="ghost" className="text-xs uppercase tracking-wider text-foreground/70 hover:text-foreground hover:bg-transparent px-0">
+              View Details <ArrowRight className="ml-2 h-3 w-3" />
             </Button>
           </Link>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

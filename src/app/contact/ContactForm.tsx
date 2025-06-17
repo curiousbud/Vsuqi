@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -11,15 +11,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { generateContactResponse, GenerateContactResponseInput, GenerateContactResponseOutput } from '@/ai/flows/generate-contact-response';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader2, Send, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useSearchParams } from 'next/navigation';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
   phone: z.string().optional().refine(value => !value || /^\+?[1-9]\d{1,14}$/.test(value), {
-    message: "Invalid phone number format. (e.g., +1234567890 or 1234567890)"
+    message: "Invalid phone number format."
   }),
+  subject: z.string().min(3, { message: 'Subject must be at least 3 characters.'}).optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
@@ -30,6 +32,7 @@ export default function ContactForm() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState<string | null>(null);
   const { toast } = useToast();
+  const searchParams = useSearchParams();
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
@@ -37,39 +40,50 @@ export default function ContactForm() {
       name: '',
       email: '',
       phone: '',
+      subject: '',
       message: '',
     },
   });
+
+ useEffect(() => {
+    const productName = searchParams.get('product');
+    const productId = searchParams.get('productId');
+    if (productName) {
+      form.setValue('subject', `Inquiry about ${productName}`);
+      form.setValue('message', `Hello, I'm interested in learning more about the product: ${productName} (ID: ${productId || 'N/A'}).\n\nPlease provide more details.\n\nThanks`);
+    }
+  }, [searchParams, form]);
+
 
   async function onSubmit(values: ContactFormValues) {
     setIsLoading(true);
     setAiResponse(null);
 
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     console.log('Form submitted:', values);
 
     toast({
-      title: 'Message Sent!',
-      description: 'Thank you for your message. We will get back to you soon.',
+      title: 'Message Sent',
+      description: 'Thank you for your inquiry. We will be in touch shortly.',
+      className: 'bg-background border-primary text-foreground',
     });
     
     setIsLoading(false);
-    form.reset();
+    // form.reset(); // Optionally reset or keep filled for AI
 
-    // Trigger AI response generation
     setIsAiLoading(true);
     try {
-      const aiInput: GenerateContactResponseInput = { query: values.message };
+      const aiInput: GenerateContactResponseInput = { query: `Subject: ${values.subject}\nMessage: ${values.message}\nFrom: ${values.name} (${values.email})` };
       const response: GenerateContactResponseOutput = await generateContactResponse(aiInput);
       setAiResponse(response.response);
     } catch (error) {
       console.error('Error generating AI response:', error);
-      toast({
-        title: 'AI Error',
-        description: 'Could not generate AI suggestion at this time.',
-        variant: 'destructive',
-      });
+      // Toast for AI error is optional in Dior-like design, can be silent
+      // toast({
+      //   title: 'AI Error',
+      //   description: 'Could not generate AI suggestion at this time.',
+      //   variant: 'destructive',
+      // });
       setAiResponse(null);
     } finally {
       setIsAiLoading(false);
@@ -80,40 +94,55 @@ export default function ContactForm() {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email Address</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="you@example.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="grid sm:grid-cols-2 gap-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Full Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your Name" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Email Address</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="your.email@example.com" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <FormField
             control={form.control}
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number (Optional)</FormLabel>
+                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Phone Number (Optional)</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 555 123 4567" {...field} />
+                  <Input type="tel" placeholder="+1 555 123 4567" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+           <FormField
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Subject</FormLabel>
+                <FormControl>
+                  <Input placeholder="Inquiry Subject" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -124,30 +153,30 @@ export default function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="How can we help you today?" rows={5} {...field} />
+                  <Textarea placeholder="Your message..." rows={5} {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50 min-h-[120px]" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading || isAiLoading}>
-            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/80 rounded-sm text-sm uppercase tracking-wider py-3 h-auto" disabled={isLoading || isAiLoading}>
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
             Send Message
           </Button>
         </form>
       </Form>
 
       {(isAiLoading || aiResponse) && (
-        <Card className="mt-8 bg-accent/50 border-accent">
+        <Card className="mt-8 bg-secondary/30 border-foreground/10 rounded-sm">
           <CardHeader>
-            <CardTitle className="flex items-center text-accent-foreground">
-              <Sparkles className="mr-2 h-5 w-5" />
-              AI Suggested Response
+            <CardTitle className="flex items-center text-foreground font-serif text-lg">
+              <Sparkles className="mr-2 h-5 w-5 text-primary" />
+              AI Suggested Reply
             </CardTitle>
-            <CardDescription>
-              Here&apos;s a suggestion based on the query (for internal use or inspiration):
+            <CardDescription className="text-xs text-muted-foreground">
+              For internal reference, here&apos;s an AI-generated suggestion based on the query:
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -157,7 +186,7 @@ export default function ContactForm() {
                 <span>Generating suggestion...</span>
               </div>
             )}
-            {aiResponse && <p className="text-sm text-accent-foreground whitespace-pre-wrap">{aiResponse}</p>}
+            {aiResponse && <p className="text-sm text-foreground/80 whitespace-pre-wrap">{aiResponse}</p>}
           </CardContent>
         </Card>
       )}
