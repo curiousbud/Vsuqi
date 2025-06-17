@@ -1,6 +1,7 @@
 
 # Vsuqi - Modern E-commerce Platform
-[![Netlify Status](https://api.netlify.com/api/v1/badges/470945f3-196e-4bbd-83a5-c8da72eb9190/deploy-status)](https://app.netlify.com/projects/vsuqi/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/470945f3-196e-4bbd-83a5-c8da72eb9190/deploy-status)](https://app.netlify.com/projects/vsuqi/deploys).
+
 This Next.js e-commerce starter project, crafted in Firebase Studio, showcases a sleek, minimalist design inspired by luxury brands. It boasts a dynamic product catalog with full customization, seamless multi-currency support, and AI-driven response suggestions for a smarter shopping experience.
 
 ## Key Features
