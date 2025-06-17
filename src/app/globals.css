@@ -35,6 +35,15 @@
 
     --radius: 0.5rem;
 
+    /* Container padding variables */
+    --container-padding-default: 1rem;  /* For screens < sm */
+    --container-padding-sm: 1.5rem; /* For sm and up */
+    --container-padding-md: 2rem;   /* For md and up */
+    --container-padding-lg: 2.5rem; /* For lg and up */
+    --container-padding-xl: 3rem;   /* For xl and up */
+    --container-padding-2xl: 3rem;  /* For 2xl and up, matching xl or can be larger */
+
+
     /* Chart colors - keeping existing, can be themed if charts are used */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -74,6 +83,13 @@
     --border: 240 5% 14.9%;
     --input: 240 5% 14.9%;
     --ring: 240 60% 70%;
+
+    /* Update container padding for dark theme if desired, or they inherit from :root */
+    /* Example: if you want different padding in dark mode
+    --container-padding-default: 0.75rem;
+    --container-padding-sm: 1.25rem;
+    */
+
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;

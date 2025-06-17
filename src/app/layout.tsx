@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className="font-body antialiased min-h-screen flex flex-col">
         <CurrencyProvider>
           <Header />
-          <main className="flex-grow container mx-auto px-4 py-8">
+          <main className="flex-grow container mx-auto py-8">
             {children}
           </main>
           <Footer />

@@ -10,8 +10,16 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
+      padding: {
+        DEFAULT: 'var(--container-padding-default)',
+        sm: 'var(--container-padding-sm)',
+        md: 'var(--container-padding-md)',
+        lg: 'var(--container-padding-lg)',
+        xl: 'var(--container-padding-xl)',
+        '2xl': 'var(--container-padding-2xl)',
+      },
+      screens: { // These will be merged with Tailwind's default screens.
+                 // Your custom '2xl' will override Tailwind's default '2xl' if it exists.
         "2xl": "1400px",
       },
     },
