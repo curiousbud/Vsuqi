@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useContext } from 'react';
 import { CurrencyContext } from '@/context/CurrencyContext';
 import type { Currency } from '@/context/CurrencyContext';
+import siteConfig from '@/config/site.json';
 
 
 const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
@@ -60,9 +61,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label="Vsuqi Home">
+        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.companyName} Home`}>
           <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
-          <span className="font-bold text-xl text-foreground">Vsuqi</span>
+          <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
         </Link>
         
         <div className="flex items-center space-x-1">
@@ -85,9 +86,9 @@ export default function Header() {
               <SheetContent side="right" className="w-[280px] p-6">
                 <div className="flex flex-col space-y-4">
                   <div className="flex justify-between items-center mb-4">
-                     <Link href="/" className="flex items-center gap-2" aria-label="Vsuqi Home">
+                     <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.companyName} Home`}>
                        <ShoppingBag className="h-7 w-7 text-primary-foreground bg-primary p-1 rounded-md" />
-                       <span className="font-bold text-xl text-foreground">Vsuqi</span>
+                       <span className="font-bold text-xl text-foreground">{siteConfig.companyName}</span>
                      </Link>
                     <SheetClose asChild>
                        <Button variant="ghost" size="icon" aria-label="Close menu">

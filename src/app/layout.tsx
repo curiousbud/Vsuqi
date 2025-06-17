@@ -6,10 +6,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from '@/context/CurrencyContext';
+import siteConfig from '@/config/site.json';
 
 export const metadata: Metadata = {
-  title: 'Vsuqi - Modern E-commerce',
-  description: 'Discover unique products at Vsuqi.',
+  title: siteConfig.meta.title,
+  description: siteConfig.meta.description,
 };
 
 export default function RootLayout({

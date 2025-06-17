@@ -1,0 +1,21 @@
+
+{
+  "companyName": "Vsuqi",
+  "contact": {
+    "email": "support@vsuqi.com",
+    "phone": "+1 (234) 567-890",
+    "whatsapp": "1234567890",
+    "address": "123 Vsuqi Street, Web City, 90001"
+  },
+  "socialLinks": [
+    { "name": "Instagram", "href": "https://instagram.com/vsuqi_official" },
+    { "name": "Facebook", "href": "https://facebook.com/vsuqi" },
+    { "name": "Twitter", "href": "https://twitter.com/vsuqi" },
+    { "name": "YouTube", "href": "https://youtube.com/vsuqichannel" },
+    { "name": "LinkedIn", "href": "https://linkedin.com/company/vsuqi" }
+  ],
+  "meta": {
+    "title": "Vsuqi - Modern E-commerce",
+    "description": "Discover unique products at Vsuqi."
+  }
+}

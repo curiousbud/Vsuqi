@@ -1,7 +1,9 @@
+
 import { Mail, Phone, MessageSquare, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import siteConfig from '@/config/site.json';
 
 export default function ContactPage() {
   return (
@@ -16,8 +18,8 @@ export default function ContactPage() {
             <Mail className="h-6 w-6 text-primary-foreground mt-1" />
             <div>
               <h3 className="font-medium text-foreground">Email Us</h3>
-              <a href="mailto:support@vsuqi.com" className="text-muted-foreground hover:text-primary-foreground transition-colors">
-                support@vsuqi.com
+              <a href={`mailto:${siteConfig.contact.email}`} className="text-muted-foreground hover:text-primary-foreground transition-colors">
+                {siteConfig.contact.email}
               </a>
             </div>
           </div>
@@ -26,8 +28,8 @@ export default function ContactPage() {
             <Phone className="h-6 w-6 text-primary-foreground mt-1" />
             <div>
               <h3 className="font-medium text-foreground">Call Us</h3>
-              <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary-foreground transition-colors">
-                +1 (234) 567-890
+              <a href={`tel:${siteConfig.contact.phone}`} className="text-muted-foreground hover:text-primary-foreground transition-colors">
+                {siteConfig.contact.phone}
               </a>
             </div>
           </div>
@@ -36,7 +38,7 @@ export default function ContactPage() {
             <MessageSquare className="h-6 w-6 text-primary-foreground mt-1" />
             <div>
               <h3 className="font-medium text-foreground">WhatsApp</h3>
-              <Link href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary-foreground transition-colors">
+              <Link href={`https://wa.me/${siteConfig.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary-foreground transition-colors">
                 Chat with us
               </Link>
             </div>
@@ -46,7 +48,7 @@ export default function ContactPage() {
             <MapPin className="h-6 w-6 text-primary-foreground mt-1" />
             <div>
               <h3 className="font-medium text-foreground">Our Office</h3>
-              <p className="text-muted-foreground">123 Vsuqi Street, Web City, 90001</p>
+              <p className="text-muted-foreground">{siteConfig.contact.address}</p>
             </div>
           </div>
         </div>

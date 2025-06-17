@@ -1,8 +1,10 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
 import { getAllProducts, Product } from '@/lib/products';
 import { PackageOpen } from 'lucide-react';
+import siteConfig from '@/config/site.json';
 
 export default function HomePage() {
   const featuredProducts = getAllProducts().slice(0, 3); // Show first 3 products as featured
@@ -12,7 +14,7 @@ export default function HomePage() {
       <section className="text-center py-16 md:py-24 bg-gradient-to-br from-primary/30 via-background to-background rounded-xl shadow-sm">
         <div className="container">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground font-headline">
-            Welcome to Vsuqi
+            Welcome to {siteConfig.companyName}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Discover a curated collection of modern and unique products designed to enhance your lifestyle.
