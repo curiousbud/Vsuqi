@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { getProductBySlug, getAllProducts, Product } from '@/lib/products';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ShoppingCart } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -104,10 +104,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             <p className="text-muted-foreground leading-relaxed">{product.description}</p>
           </div>
           
-          <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md">
-            <ShoppingCart className="mr-2 h-5 w-5" />
-            Add to Cart
-          </Button>
+          <Link href="/contact" passHref className="w-full block">
+            <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md">
+              <Phone className="mr-2 h-5 w-5" />
+              Contact Us to Order
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
