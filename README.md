@@ -1,7 +1,7 @@
 
 # Vsuqi - Modern E-commerce Platform
 
-This is a Next.js e-commerce starter project built in Firebase Studio, designed with a sophisticated and minimalist aesthetic inspired by luxury brands. It features a configurable product catalog, multi-currency support, and AI-powered response suggestions.
+This Next.js e-commerce starter project, crafted in Firebase Studio, showcases a sleek, minimalist design inspired by luxury brands. It boasts a dynamic product catalog with full customization, seamless multi-currency support, and AI-driven response suggestions for a smarter shopping experience.
 
 ## Key Features
 
