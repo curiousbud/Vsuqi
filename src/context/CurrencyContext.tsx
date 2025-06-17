@@ -3,6 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { createContext, useState, useMemo } from 'react';
+import currencyConfigData from '@/config/currencies.json';
 
 export interface Currency {
   code: string;
@@ -10,21 +11,8 @@ export interface Currency {
   symbol: string;
 }
 
-export const currenciesList: Currency[] = [
-  { code: 'USD', name: 'US Dollar', symbol: '$' },
-  { code: 'EUR', name: 'Euro', symbol: '€' },
-  { code: 'GBP', name: 'British Pound', symbol: '£' },
-  { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
-  { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
-];
-
-export const exchangeRatesData: Record<string, number> = {
-  USD: 1,
-  EUR: 0.92,
-  GBP: 0.79,
-  JPY: 157.0,
-  CAD: 1.37,
-};
+// Use the imported data
+const { currencies: currenciesList, exchangeRates: exchangeRatesData } = currencyConfigData;
 
 interface CurrencyContextType {
   selectedCurrency: string;
@@ -45,7 +33,7 @@ export function CurrencyProvider({ children }: CurrencyProviderProps) {
   const contextValue = useMemo(() => ({
     selectedCurrency,
     setSelectedCurrency,
-    currencies: currenciesList,
+    currencies: currenciesList as Currency[], // Cast because import might not be typed
     exchangeRates: exchangeRatesData,
   }), [selectedCurrency]);
 
