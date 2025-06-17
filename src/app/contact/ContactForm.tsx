@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -16,6 +17,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
+  phone: z.string().optional().refine(value => !value || /^\+?[1-9]\d{1,14}$/.test(value), {
+    message: "Invalid phone number format. (e.g., +1234567890 or 1234567890)"
+  }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
@@ -32,6 +36,7 @@ export default function ContactForm() {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
       message: '',
     },
   });
@@ -96,6 +101,19 @@ export default function ContactForm() {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="you@example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number (Optional)</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="+1 555 123 4567" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
