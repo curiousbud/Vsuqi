@@ -59,18 +59,22 @@ export default function ContactForm() {
     setIsLoading(true);
     setAiResponse(null);
 
+    // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('Form submitted:', values);
+    console.log('Form submitted:', values); // Keep for debugging
 
+    // Show success toast
     toast({
       title: 'Message Sent',
       description: 'Thank you for your inquiry. We will be in touch shortly.',
-      className: 'bg-background border-primary text-foreground',
+      className: 'bg-background border-primary text-foreground', // Dior-like toast
     });
     
     setIsLoading(false);
-    // form.reset(); // Optionally reset or keep filled for AI
+    // Optionally reset form or keep filled for AI. For Dior aesthetic, usually reset.
+    // form.reset(); 
 
+    // AI Suggestion Generation
     setIsAiLoading(true);
     try {
       const aiInput: GenerateContactResponseInput = { query: `Subject: ${values.subject}\nMessage: ${values.message}\nFrom: ${values.name} (${values.email})` };
@@ -78,9 +82,9 @@ export default function ContactForm() {
       setAiResponse(response.response);
     } catch (error) {
       console.error('Error generating AI response:', error);
-      // Toast for AI error is optional in Dior-like design, can be silent
+      // For Dior, AI errors might be silent or a very subtle notification.
       // toast({
-      //   title: 'AI Error',
+      //   title: 'AI Suggestion Error',
       //   description: 'Could not generate AI suggestion at this time.',
       //   variant: 'destructive',
       // });
@@ -89,20 +93,24 @@ export default function ContactForm() {
       setIsAiLoading(false);
     }
   }
+  
+  const inputClassName = "bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-1 focus:ring-foreground/50 placeholder:text-foreground/50 text-sm";
+  const labelClassName = "text-xs uppercase tracking-wider text-foreground/70 font-medium";
+
 
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Full Name</FormLabel>
+                  <FormLabel className={labelClassName}>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your Name" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                    <Input placeholder="Your Full Name" {...field} className={inputClassName} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -113,9 +121,9 @@ export default function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Email Address</FormLabel>
+                  <FormLabel className={labelClassName}>Email Address</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your.email@example.com" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                    <Input type="email" placeholder="your.email@example.com" {...field} className={inputClassName} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -127,9 +135,9 @@ export default function ContactForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Phone Number (Optional)</FormLabel>
+                <FormLabel className={labelClassName}>Phone Number (Optional)</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 555 123 4567" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                  <Input type="tel" placeholder="+1 555 123 4567" {...field} className={inputClassName} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -140,9 +148,9 @@ export default function ContactForm() {
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Subject</FormLabel>
+                <FormLabel className={labelClassName}>Subject</FormLabel>
                 <FormControl>
-                  <Input placeholder="Inquiry Subject" {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50" />
+                  <Input placeholder="Briefly, what is this regarding?" {...field} className={inputClassName} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -153,9 +161,9 @@ export default function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs uppercase tracking-wider text-foreground/70">Message</FormLabel>
+                <FormLabel className={labelClassName}>Your Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Your message..." rows={5} {...field} className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 placeholder:text-foreground/50 min-h-[120px]" />
+                  <Textarea placeholder="Please share details of your inquiry..." rows={5} {...field} className={`${inputClassName} min-h-[120px]`} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -181,7 +189,7 @@ export default function ContactForm() {
           </CardHeader>
           <CardContent>
             {isAiLoading && !aiResponse && (
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 <span>Generating suggestion...</span>
               </div>

@@ -6,7 +6,7 @@ import siteConfig from '@/config/site.json';
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto max-w-5xl py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8 animate-fadeIn">
+    <div className="container mx-auto max-w-5xl py-12 md:py-16 lg:py-20 px-4 md:px-6 animate-fadeIn">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 md:mb-16 text-foreground">Contact Us</h1>
       
       <div className="grid lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start">

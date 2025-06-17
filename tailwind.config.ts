@@ -24,13 +24,13 @@ export default {
         "md": "768px",
         "lg": "1024px",
         "xl": "1280px",
-        "2xl": "1536px", // Dior uses large screens well
+        "2xl": "1536px", 
       },
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Clean sans-serif for body/UI
-        serif: ['EB Garamond', 'serif'], // Elegant serif for headings
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+        serif: ['EB Garamond', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
         code: ['monospace'],
       },
       colors: {
@@ -86,8 +86,8 @@ export default {
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 1px)', // Sharper edges
+        lg: 'var(--radius)', 
+        md: 'calc(var(--radius) - 1px)', 
         sm: 'calc(var(--radius) - 2px)',
       },
       keyframes: {
@@ -119,9 +119,12 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fadeIn': 'fadeIn 0.5s ease-out forwards',
-        'fadeInUp': 'fadeInUp 0.7s ease-out forwards',
+        'fadeIn': 'fadeIn 0.6s ease-out forwards', // Slightly slower for luxury feel
+        'fadeInUp': 'fadeInUp 0.8s ease-out forwards', // Slightly slower
       },
+      boxShadow: {
+        'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)', // More subtle shadow for cards if needed
+      }
     },
   },
   plugins: [

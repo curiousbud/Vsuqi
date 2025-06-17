@@ -6,7 +6,7 @@ export default function ProductListingPage() {
   const products = getAllProducts();
 
   return (
-    <div className="container mx-auto py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8 animate-fadeIn">
+    <div className="container mx-auto py-12 md:py-16 lg:py-20 px-4 md:px-6 animate-fadeIn">
       <h1 className="text-4xl md:text-5xl font-serif mb-12 md:mb-16 text-center text-foreground">
         All Products
       </h1>

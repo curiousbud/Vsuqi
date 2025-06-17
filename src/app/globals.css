@@ -5,43 +5,43 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* White */
-    --foreground: 0 0% 10%; /* Near Black */
+    /* Dior-inspired Palette: Clean, High Contrast, Sophisticated Blue, Gold Accent */
+    --background: 0 0% 98%; /* Very Light Gray / Almost White */
+    --foreground: 0 0% 10%; /* Dark Charcoal / Near Black */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 10%; /* Near Black */
+    --card-foreground: 0 0% 10%; 
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 0 0% 10%; /* Near Black */
+    --popover: 0 0% 100%; 
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 0 0% 8%; /* Very Dark Gray / Black */
-    --primary-foreground: 0 0% 98%; /* Almost White (for text on primary) */
+    --primary: 210 50% 35%; /* Deep, Sophisticated Blue */
+    --primary-foreground: 0 0% 98%; /* Almost White for text on primary */
 
-    --secondary: 0 0% 95%; /* Very Light Gray */
-    --secondary-foreground: 0 0% 20%; /* Dark Gray */
+    --secondary: 210 30% 95%; /* Very Light Cool Gray */
+    --secondary-foreground: 210 30% 30%; /* Muted Blue-Gray */
 
-    --muted: 0 0% 90%; /* Light Gray (for subtle backgrounds or borders) */
-    --muted-foreground: 0 0% 45%; /* Medium Gray (for less important text) */
+    --muted: 0 0% 90%; /* Light Gray for subtle backgrounds or borders */
+    --muted-foreground: 0 0% 45%; /* Medium Gray for less important text */
 
-    --accent: 45 86% 79%; /* Subtle Pale Gold/Nude - Dior uses this sparingly */
-    --accent-foreground: 0 0% 10%; /* Near Black (for text on accent) */
+    --accent: 35 80% 60%; /* Refined Gold/Amber */
+    --accent-foreground: 0 0% 10%; /* Near Black for text on accent */
 
-    --destructive: 0 72% 51%; /* Standard Red */
+    --destructive: 0 72% 51%; /* Standard Red for errors */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%; /* Light Gray border */
+    --border: 0 0% 88%; /* Light Gray border, slightly more visible */
     --input: 0 0% 98%; /* Very Light Gray for inputs, or white with border */
-    --ring: 0 0% 10%; /* Near black for focus rings */
+    --ring: 210 50% 45%; /* Primary color for focus rings */
 
-    --radius: 0.25rem; /* Dior uses sharper edges, so smaller radius */
-
+    --radius: 0.25rem; /* Sharper edges, Dior uses minimal rounding */
+    
     --container-padding-default: 1.5rem;
     --container-padding-sm: 2rem;
     --container-padding-md: 2.5rem;
     --container-padding-lg: 3rem;
     --container-padding-xl: 4rem;
     --container-padding-2xl: 5rem;
-
 
     --chart-1: 0 0% 10%;
     --chart-2: 0 0% 30%;
@@ -51,12 +51,12 @@
 
     --sidebar-background: 0 0% 97%;
     --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 0 0% 8%;
+    --sidebar-primary: 210 50% 35%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 92%;
+    --sidebar-accent: 210 30% 92%;
     --sidebar-accent-foreground: 0 0% 10%;
     --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 0 0% 10%;
+    --sidebar-ring: 210 50% 45%;
   }
 
   .dark {
@@ -69,24 +69,24 @@
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 98%; /* Almost White (for primary actions in dark mode) */
-    --primary-foreground: 0 0% 8%; /* Very Dark Gray / Black (for text on primary) */
+    --primary: 210 60% 70%; /* Lighter, desaturated blue for dark mode primary */
+    --primary-foreground: 0 0% 8%; 
 
     --secondary: 0 0% 15%; /* Darker Gray */
     --secondary-foreground: 0 0% 80%; /* Lighter Gray */
 
-    --muted: 0 0% 20%; /* Darker Gray (for subtle backgrounds or borders) */
-    --muted-foreground: 0 0% 65%; /* Medium Light Gray */
+    --muted: 0 0% 20%; 
+    --muted-foreground: 0 0% 65%; 
 
-    --accent: 45 70% 70%; /* Slightly brighter Pale Gold/Nude for dark mode */
-    --accent-foreground: 0 0% 8%; /* Very Dark Gray / Black */
+    --accent: 35 70% 70%; /* Brighter Gold/Amber for dark mode */
+    --accent-foreground: 0 0% 8%; 
 
     --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 0 0% 25%; /* Medium-Dark Gray border */
-    --input: 0 0% 10%; /* Darker Gray for inputs */
-    --ring: 0 0% 95%; /* Light Gray for focus rings */
+    --border: 0 0% 25%; 
+    --input: 0 0% 10%; 
+    --ring: 210 60% 60%; 
 
     --chart-1: 0 0% 95%;
     --chart-2: 0 0% 75%;
@@ -96,12 +96,12 @@
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary: 210 60% 70%;
     --sidebar-primary-foreground: 0 0% 8%;
     --sidebar-accent: 0 0% 20%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 0 0% 95%;
+    --sidebar-ring: 210 60% 60%;
   }
 }
 
@@ -111,9 +111,16 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif text-foreground;
+  }
+  /* Custom text shadow for hero text - subtle for readability */
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 }
 
@@ -129,9 +136,16 @@
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.7s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-700 { animation-delay: 0.7s; }
