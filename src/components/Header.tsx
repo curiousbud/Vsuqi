@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, Search, User, ShoppingBag as BagIcon, Coins } from 'lucide-react'; // Renamed ShoppingBag to BagIcon
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useContext, useState } from 'react';
 import { CurrencyContext } from '@/context/CurrencyContext';
@@ -88,7 +88,8 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="w-[280px] p-0 bg-background border-r border-foreground/10">
               <div className="flex flex-col h-full">
-                <div className="flex justify-between items-center p-4 border-b border-foreground/10">
+                <SheetHeader className="flex flex-row justify-between items-center p-4 border-b border-foreground/10">
+                  <SheetTitle className="sr-only">Main Menu</SheetTitle>
                   <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.companyName} Home`} onClick={closeMobileMenu}>
                      {siteConfig.logoUrl ? (
                         <Image
@@ -107,8 +108,8 @@ export default function Header() {
                        <X className="h-6 w-6 text-foreground" />
                      </Button>
                   </SheetClose>
-                </div>
-                <nav className="flex flex-col space-y-1 p-4">
+                </SheetHeader>
+                <nav className="flex flex-col space-y-1 p-4 overflow-y-auto">
                   <NavLinks isMobile onLinkClick={closeMobileMenu}/>
                 </nav>
                 <div className="mt-auto p-4 border-t border-foreground/10 space-y-4">
