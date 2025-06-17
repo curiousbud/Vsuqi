@@ -67,11 +67,10 @@ export default function ContactForm() {
     toast({
       title: 'Message Sent',
       description: 'Thank you for your inquiry. We will be in touch shortly.',
-      className: 'bg-background border-primary text-foreground', // Dior-like toast
+      className: 'bg-background border-primary text-foreground', 
     });
     
     setIsLoading(false);
-    // Optionally reset form or keep filled for AI. For Dior aesthetic, usually reset.
     // form.reset(); 
 
     // AI Suggestion Generation
@@ -82,12 +81,6 @@ export default function ContactForm() {
       setAiResponse(response.response);
     } catch (error) {
       console.error('Error generating AI response:', error);
-      // For Dior, AI errors might be silent or a very subtle notification.
-      // toast({
-      //   title: 'AI Suggestion Error',
-      //   description: 'Could not generate AI suggestion at this time.',
-      //   variant: 'destructive',
-      // });
       setAiResponse(null);
     } finally {
       setIsAiLoading(false);

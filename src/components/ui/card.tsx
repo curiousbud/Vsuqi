@@ -10,7 +10,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-sm border bg-card text-card-foreground shadow-none", // Dior style: no shadow, or very subtle
+      "rounded-sm border bg-card text-card-foreground shadow-none", 
       className
     )}
     {...props}
@@ -24,7 +24,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-4 md:p-5", className)} // Slightly reduced padding
+    className={cn("flex flex-col space-y-1.5 p-4 md:p-5", className)} 
     {...props}
   />
 ))
@@ -37,7 +37,7 @@ const CardTitle = React.forwardRef<
   <div 
     ref={ref}
     className={cn(
-      "font-serif text-lg md:text-xl font-semibold leading-none tracking-tight", // Adjusted size
+      "font-serif text-lg md:text-xl font-semibold leading-none tracking-tight", 
       className
     )}
     {...props}
@@ -52,7 +52,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div 
     ref={ref}
-    className={cn("text-xs text-muted-foreground", className)} // Smaller text for description
+    className={cn("text-xs text-muted-foreground", className)} 
     {...props}
   />
 ))

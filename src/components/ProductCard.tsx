@@ -31,7 +31,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
         </Link>
-        {/* Short description could be Dior-like, very concise or omitted for cleaner look */}
         <p className="text-xs text-muted-foreground mb-2 line-clamp-2 h-8"> 
           {product.shortDescription}
         </p>

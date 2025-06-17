@@ -119,11 +119,11 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fadeIn': 'fadeIn 0.6s ease-out forwards', // Slightly slower for luxury feel
-        'fadeInUp': 'fadeInUp 0.8s ease-out forwards', // Slightly slower
+        'fadeIn': 'fadeIn 0.6s ease-out forwards',
+        'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
       },
       boxShadow: {
-        'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)', // More subtle shadow for cards if needed
+        'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)', 
       }
     },
   },
