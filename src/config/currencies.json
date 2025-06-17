@@ -10,11 +10,11 @@
     { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" }
   ],
   "exchangeRates": {
-    "USD": 1,
+    "USD": 1.00,
     "EUR": 0.92,
     "GBP": 0.79,
-    "JPY": 157.0,
+    "JPY": 157.00,
     "CAD": 1.37,
-    "INR": 83.0
+    "INR": 83.50 
   }
 }

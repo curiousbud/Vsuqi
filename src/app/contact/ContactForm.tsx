@@ -50,7 +50,7 @@ export default function ContactForm() {
     const productId = searchParams.get('productId');
     if (productName) {
       form.setValue('subject', `Inquiry about ${productName}`);
-      form.setValue('message', `Hello, I'm interested in learning more about the product: ${productName} (ID: ${productId || 'N/A'}).\n\nPlease provide more details.\n\nThanks`);
+      form.setValue('message', `Hello, I'm interested in learning more about the product: ${productName} (ID: ${productId || 'N/A'}).\n\nPlease provide more details regarding availability, pricing, and ordering.\n\nThanks`);
     }
   }, [searchParams, form]);
 
@@ -59,36 +59,39 @@ export default function ContactForm() {
     setIsLoading(true);
     setAiResponse(null);
 
-    // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('Form submitted:', values); // Keep for debugging
+    console.log('Form submitted:', values); 
 
-    // Show success toast
     toast({
-      title: 'Message Sent',
-      description: 'Thank you for your inquiry. We will be in touch shortly.',
-      className: 'bg-background border-primary text-foreground', 
+      title: 'Message Sent Successfully',
+      description: 'Thank you for reaching out. We will get back to you shortly.',
+      className: 'bg-primary border-primary text-primary-foreground', // Using primary for success
     });
     
     setIsLoading(false);
-    // form.reset(); 
+    // form.reset(); // Commented out to keep form data for AI suggestion if needed
 
     // AI Suggestion Generation
     setIsAiLoading(true);
     try {
-      const aiInput: GenerateContactResponseInput = { query: `Subject: ${values.subject}\nMessage: ${values.message}\nFrom: ${values.name} (${values.email})` };
+      const aiInput: GenerateContactResponseInput = { query: `Subject: ${values.subject}\nMessage: ${values.message}\nFrom: ${values.name} (${values.email}${values.phone ? ', Phone: ' + values.phone : ''})` };
       const response: GenerateContactResponseOutput = await generateContactResponse(aiInput);
       setAiResponse(response.response);
     } catch (error) {
       console.error('Error generating AI response:', error);
+      toast({ // Using toast for AI errors as well
+        variant: "destructive",
+        title: "AI Suggestion Error",
+        description: "Could not generate AI suggestion at this time.",
+      });
       setAiResponse(null);
     } finally {
       setIsAiLoading(false);
     }
   }
   
-  const inputClassName = "bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-1 focus:ring-foreground/50 placeholder:text-foreground/50 text-sm";
-  const labelClassName = "text-xs uppercase tracking-wider text-foreground/70 font-medium";
+  const inputClassName = "bg-background border-border focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-muted-foreground text-sm rounded-sm";
+  const labelClassName = "text-xs uppercase tracking-wider text-foreground/80 font-medium";
 
 
   return (
@@ -103,7 +106,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className={labelClassName}>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your Full Name" {...field} className={inputClassName} />
+                    <Input placeholder="e.g., John Doe" {...field} className={inputClassName} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -116,7 +119,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className={labelClassName}>Email Address</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your.email@example.com" {...field} className={inputClassName} />
+                    <Input type="email" placeholder="e.g., john.doe@example.com" {...field} className={inputClassName} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -128,9 +131,9 @@ export default function ContactForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className={labelClassName}>Phone Number (Optional)</FormLabel>
+                <FormLabel className={labelClassName}>Phone (Optional)</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 555 123 4567" {...field} className={inputClassName} />
+                  <Input type="tel" placeholder="e.g., +1 234 567 8900" {...field} className={inputClassName} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -143,7 +146,7 @@ export default function ContactForm() {
               <FormItem>
                 <FormLabel className={labelClassName}>Subject</FormLabel>
                 <FormControl>
-                  <Input placeholder="Briefly, what is this regarding?" {...field} className={inputClassName} />
+                  <Input placeholder="e.g., Question about Product X" {...field} className={inputClassName} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -156,13 +159,13 @@ export default function ContactForm() {
               <FormItem>
                 <FormLabel className={labelClassName}>Your Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Please share details of your inquiry..." rows={5} {...field} className={`${inputClassName} min-h-[120px]`} />
+                  <Textarea placeholder="Please describe your inquiry in detail..." rows={5} {...field} className={`${inputClassName} min-h-[120px]`} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/80 rounded-sm text-sm uppercase tracking-wider py-3 h-auto" disabled={isLoading || isAiLoading}>
+          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/80 rounded-sm text-sm uppercase tracking-wider py-3 h-auto shadow-md" disabled={isLoading || isAiLoading}>
             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
             Send Message
           </Button>
@@ -170,24 +173,24 @@ export default function ContactForm() {
       </Form>
 
       {(isAiLoading || aiResponse) && (
-        <Card className="mt-8 bg-secondary/30 border-foreground/10 rounded-sm">
+        <Card className="mt-8 bg-secondary/30 border-border rounded-sm shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center text-foreground font-serif text-lg">
-              <Sparkles className="mr-2 h-5 w-5 text-primary" />
-              AI Suggested Reply
+              <Sparkles className="mr-2 h-5 w-5 text-accent" />
+              AI Suggested Reply (Internal)
             </CardTitle>
             <CardDescription className="text-xs text-muted-foreground">
-              For internal reference, here&apos;s an AI-generated suggestion based on the query:
+              For internal reference, here&apos;s an AI-generated suggestion based on the query. (This would not be visible to customers in a live environment without an active AI backend.)
             </CardDescription>
           </CardHeader>
           <CardContent>
             {isAiLoading && !aiResponse && (
               <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                <span>Generating suggestion...</span>
+                <span>Generating suggestion... Please ensure your local Genkit/Ollama server is running.</span>
               </div>
             )}
-            {aiResponse && <p className="text-sm text-foreground/80 whitespace-pre-wrap">{aiResponse}</p>}
+            {aiResponse && <p className="text-sm text-foreground/80 whitespace-pre-wrap p-3 bg-background/50 rounded-sm border border-border/50">{aiResponse}</p>}
           </CardContent>
         </Card>
       )}

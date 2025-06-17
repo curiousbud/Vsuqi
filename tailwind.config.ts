@@ -24,11 +24,12 @@ export default {
         "md": "768px",
         "lg": "1024px",
         "xl": "1280px",
-        "2xl": "1536px", 
+        "2xl": "1400px", // Adjusted max width for a more classic layout
       },
     },
     extend: {
       fontFamily: {
+        // Using Inter for body and EB Garamond for headings (already in layout.tsx)
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
         serif: ['EB Garamond', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
         code: ['monospace'],
@@ -112,18 +113,19 @@ export default {
           '100%': { opacity: '1' },
         },
         fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '0%': { opacity: '0', transform: 'translateY(15px)' }, // Reduced translateY
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fadeIn': 'fadeIn 0.6s ease-out forwards',
-        'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
+        'fadeIn': 'fadeIn 0.5s ease-out forwards', // Slightly faster
+        'fadeInUp': 'fadeInUp 0.7s ease-out forwards', // Slightly faster
       },
       boxShadow: {
-        'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)', 
+        'subtle': '0 2px 8px rgba(0, 0, 0, 0.06)', 
+        'classic': '0 4px 12px rgba(0, 0, 0, 0.08)',
       }
     },
   },

@@ -1,28 +1,28 @@
 
 {
   "companyName": "Vsuqi",
-  "logoUrl": "https://placehold.co/150x50.png?text=Vsuqi+Logo",
-  "companyLogoAltText": "Vsuqi Company Logo",
-  "heroImageUrl": "https://placehold.co/1600x900.png?text=Modern+Lifestyle",
+  "logoUrl": "https://placehold.co/200x60.png?text=Vsuqi+Elegance",
+  "companyLogoAltText": "Vsuqi Premium Menswear Logo",
+  "heroImageUrl": "https://placehold.co/1920x900.png?text=Refined+Mens+Fashion",
   "contact": {
-    "email": "support@vsuqi.com",
-    "phone": "+1 (234) 567-890",
-    "whatsapp": "1234567890",
-    "address": "123 Vsuqi Street, Web City, 90001"
+    "email": "customercare@vsuqi.com",
+    "phone": "+91 987 654 3210",
+    "whatsapp": "919876543210",
+    "address": "456 Fashion Avenue, Commerce City, India 500001"
   },
   "socialLinks": [
     { "name": "Instagram", "href": "https://instagram.com/vsuqi_official" },
     { "name": "Facebook", "href": "https://facebook.com/vsuqi" },
     { "name": "Twitter", "href": "https://twitter.com/vsuqi" },
-    { "name": "YouTube", "href": "https://youtube.com/vsuqichannel" },
-    { "name": "LinkedIn", "href": "https://linkedin.com/company/vsuqi" }
+    { "name": "Youtube", "href": "https://youtube.com/vsuqichannel" },
+    { "name": "Linkedin", "href": "https://linkedin.com/company/vsuqi" }
   ],
   "meta": {
-    "title": "Vsuqi - Modern E-commerce",
-    "description": "Discover unique products at Vsuqi."
+    "title": "Vsuqi - Premium Menswear & Accessories",
+    "description": "Discover the latest collection of premium menswear, suits, shirts, and accessories from Vsuqi."
   },
   "comments": {
-    "logoUrl": "Provide a direct URL to your logo image. If using an external domain (not placehold.co), add its hostname to next.config.ts images.remotePatterns.",
-    "heroImageUrl": "Provide a direct URL for the hero section background image. If using an external domain, add its hostname to next.config.ts images.remotePatterns."
+    "logoUrl": "Provide a direct URL to your logo image. Recommended size for this theme: ~200x60px. If using an external domain, add its hostname to next.config.ts images.remotePatterns.",
+    "heroImageUrl": "Provide a direct URL for the hero section background image. Recommended aspect ratio: ~16:7 or 16:8. If using an external domain, add its hostname to next.config.ts images.remotePatterns."
   }
 }

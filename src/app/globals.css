@@ -5,36 +5,36 @@
 
 @layer base {
   :root {
-    /* Dior-inspired Palette: Clean, High Contrast, Sophisticated Blue, Gold Accent */
-    --background: 0 0% 98%; /* Very Light Gray / Almost White */
-    --foreground: 0 0% 10%; /* Dark Charcoal / Near Black */
+    /* Louis Philippe Inspired Palette: Classic, Elegant, Premium */
+    --background: 210 20% 98%; /* Very Light Cool Gray / Off-White */
+    --foreground: 210 30% 15%; /* Dark Navy/Charcoal */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 10%; 
+    --card-foreground: 210 30% 15%; 
 
     --popover: 0 0% 100%; 
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 210 30% 15%;
 
-    --primary: 210 50% 35%; /* Deep, Sophisticated Blue */
+    --primary: 210 70% 30%; /* Deep, Rich Blue (e.g., Louis Philippe Navy) */
     --primary-foreground: 0 0% 98%; /* Almost White for text on primary */
 
-    --secondary: 210 30% 95%; /* Very Light Cool Gray */
-    --secondary-foreground: 210 30% 30%; /* Muted Blue-Gray */
+    --secondary: 210 25% 94%; /* Light Gray-Blue */
+    --secondary-foreground: 210 40% 25%; /* Muted Dark Blue */
 
-    --muted: 0 0% 90%; /* Light Gray for subtle backgrounds or borders */
-    --muted-foreground: 0 0% 45%; /* Medium Gray for less important text */
+    --muted: 210 20% 90%; /* Light Gray for subtle backgrounds or borders */
+    --muted-foreground: 210 15% 45%; /* Medium Gray for less important text */
 
-    --accent: 35 80% 60%; /* Refined Gold/Amber */
-    --accent-foreground: 0 0% 10%; /* Near Black for text on accent */
+    --accent: 40 65% 55%; /* Muted Gold/Brass - Sophisticated Accent */
+    --accent-foreground: 210 30% 15%; /* Dark Navy for text on accent */
 
     --destructive: 0 72% 51%; /* Standard Red for errors */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 88%; /* Light Gray border, slightly more visible */
-    --input: 0 0% 98%; /* Very Light Gray for inputs, or white with border */
-    --ring: 210 50% 45%; /* Primary color for focus rings */
+    --border: 210 20% 85%; /* Softer, Muted Blue-Gray Border */
+    --input: 0 0% 100%; /* White for input background */
+    --ring: 210 70% 40%; /* Primary color for focus rings */
 
-    --radius: 0.25rem; /* Sharper edges, Dior uses minimal rounding */
+    --radius: 0.25rem; /* Slightly sharper, more classic rounding */
     
     --container-padding-default: 1.5rem;
     --container-padding-sm: 2rem;
@@ -43,65 +43,65 @@
     --container-padding-xl: 4rem;
     --container-padding-2xl: 5rem;
 
-    --chart-1: 0 0% 10%;
-    --chart-2: 0 0% 30%;
-    --chart-3: 0 0% 50%;
-    --chart-4: 0 0% 70%;
-    --chart-5: 0 0% 90%;
+    --chart-1: 210 30% 20%;
+    --chart-2: 210 30% 40%;
+    --chart-3: 210 30% 60%;
+    --chart-4: 210 30% 80%;
+    --chart-5: 210 30% 90%;
 
-    --sidebar-background: 0 0% 97%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 210 50% 35%;
+    --sidebar-background: 210 20% 97%;
+    --sidebar-foreground: 210 30% 15%;
+    --sidebar-primary: 210 70% 30%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 30% 92%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 210 50% 45%;
+    --sidebar-accent: 210 25% 92%;
+    --sidebar-accent-foreground: 210 30% 15%;
+    --sidebar-border: 210 20% 85%;
+    --sidebar-ring: 210 70% 40%;
   }
 
   .dark {
-    --background: 0 0% 8%; /* Very Dark Gray / Black */
-    --foreground: 0 0% 95%; /* Light Gray / White */
+    --background: 210 30% 10%; /* Very Dark Blue/Charcoal */
+    --foreground: 210 20% 95%; /* Light Gray / Off-White */
 
-    --card: 0 0% 12%; /* Dark Gray */
-    --card-foreground: 0 0% 95%;
+    --card: 210 30% 14%; /* Dark Blue-Gray */
+    --card-foreground: 210 20% 95%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 210 30% 14%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 210 60% 70%; /* Lighter, desaturated blue for dark mode primary */
-    --primary-foreground: 0 0% 8%; 
+    --primary: 210 70% 55%; /* Slightly Brighter Blue for dark mode primary */
+    --primary-foreground: 210 20% 5%; 
 
-    --secondary: 0 0% 15%; /* Darker Gray */
-    --secondary-foreground: 0 0% 80%; /* Lighter Gray */
+    --secondary: 210 30% 20%; /* Darker Gray-Blue */
+    --secondary-foreground: 210 20% 85%; /* Lighter Gray */
 
-    --muted: 0 0% 20%; 
-    --muted-foreground: 0 0% 65%; 
+    --muted: 210 30% 25%; 
+    --muted-foreground: 210 15% 65%; 
 
-    --accent: 35 70% 70%; /* Brighter Gold/Amber for dark mode */
-    --accent-foreground: 0 0% 8%; 
+    --accent: 40 60% 65%; /* Brighter Gold for dark mode */
+    --accent-foreground: 210 30% 10%; 
 
     --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 0 0% 25%; 
-    --input: 0 0% 10%; 
-    --ring: 210 60% 60%; 
+    --border: 210 30% 30%; 
+    --input: 210 30% 12%; 
+    --ring: 210 70% 50%; 
 
-    --chart-1: 0 0% 95%;
-    --chart-2: 0 0% 75%;
-    --chart-3: 0 0% 55%;
-    --chart-4: 0 0% 35%;
-    --chart-5: 0 0% 15%;
+    --chart-1: 210 20% 95%;
+    --chart-2: 210 20% 75%;
+    --chart-3: 210 20% 55%;
+    --chart-4: 210 20% 35%;
+    --chart-5: 210 20% 15%;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 60% 70%;
-    --sidebar-primary-foreground: 0 0% 8%;
-    --sidebar-accent: 0 0% 20%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 210 60% 60%;
+    --sidebar-background: 210 30% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 210 70% 55%;
+    --sidebar-primary-foreground: 210 20% 5%;
+    --sidebar-accent: 210 30% 22%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 30% 30%;
+    --sidebar-ring: 210 70% 50%;
   }
 }
 
@@ -116,11 +116,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-foreground;
+    @apply font-serif text-foreground; /* Ensure headings use the serif font */
   }
-  /* Custom text shadow for hero text - subtle for readability */
   .text-shadow {
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 2px hsla(var(--foreground) / 0.1);
   }
 }
 
@@ -131,21 +130,41 @@
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.7s ease-out forwards;
 }
 
+/* Animation delay utilities */
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-500 { animation-delay: 0.5s; }
 .animation-delay-700 { animation-delay: 0.7s; }
+
+/* Custom CSS for 3D hover effect on product cards */
+.product-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card-hover:hover {
+  transform: translateY(-5px) translateZ(10px) rotateX(2deg) rotateY(1deg);
+  box-shadow: 0 8px 20px hsla(var(--foreground) / 0.1), 0 4px 8px hsla(var(--foreground) / 0.08);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}

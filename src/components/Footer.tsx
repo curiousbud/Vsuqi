@@ -1,10 +1,11 @@
 
 import Link from 'next/link';
-import { Instagram, Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Youtube, Linkedin, Send } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import siteConfig from '@/config/site.json';
 import { Input } from './ui/input';
+import Image from 'next/image';
 
 const iconComponents: { [key: string]: LucideIcon } = {
   Instagram,
@@ -19,36 +20,75 @@ export default function Footer() {
 
   const footerSections = [
     {
-      title: "Client Service",
+      title: "Customer Service",
       links: [
         { name: "Contact Us", href: "/contact" },
-        { name: "Delivery & Returns", href: "#" },
-        { name: "FAQ", href: "#" },
-        { name: "Track My Order", href: "#" },
+        { name: "Track Order", href: "#" },
+        { name: "Returns & Exchanges", href: "#" },
+        { name: "Shipping Information", href: "#" },
+        { name: "FAQs", href: "#" },
       ]
     },
     {
-      title: "The House Of " + siteConfig.companyName,
+      title: "Our Company",
       links: [
-        { name: "About Us", href: "#" },
+        { name: `About ${siteConfig.companyName}`, href: "#" },
+        { name: "Store Locator", href: "#" },
         { name: "Careers", href: "#" },
-        { name: "Legal Mentions", href: "#" },
-        { name: "Sitemap", href: "#" },
+        { name: "Privacy Policy", href: "#" },
+        { name: "Terms & Conditions", href: "#" },
       ]
-    }
+    },
   ];
 
   return (
-    <footer className="border-t border-foreground/10 bg-background text-foreground">
-      <div className="container mx-auto py-12 md:py-16 px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <footer className="border-t border-border bg-background text-foreground/80">
+      <div className="container mx-auto py-12 md:py-16 lg:py-20 px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12 md:mb-16">
+          <div className="lg:col-span-2">
+             <Link href="/" className="flex items-center gap-2 mb-6" aria-label={`${siteConfig.companyName} Home`}>
+              {siteConfig.logoUrl ? (
+                <Image
+                  src={siteConfig.logoUrl}
+                  alt={`${siteConfig.companyLogoAltText} Footer`}
+                  width={150} 
+                  height={38} 
+                  className="object-contain h-auto"
+                />
+              ) : (
+                <span className="font-serif text-2xl font-semibold text-foreground tracking-tight">{siteConfig.companyName}</span>
+              )}
+            </Link>
+            <p className="text-xs text-foreground/60 mb-6 max-w-md">
+              Discover timeless elegance and superior craftsmanship with {siteConfig.companyName}. 
+              Experience the epitome of style and sophistication.
+            </p>
+             <h3 className="font-serif text-sm font-semibold mb-3 uppercase tracking-wider text-foreground">Stay Updated</h3>
+            <form className="flex items-center max-w-sm">
+              <Input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="bg-secondary/50 border-border focus:border-primary focus:ring-primary text-xs placeholder:text-foreground/50 h-10 rounded-l-sm rounded-r-none flex-grow" 
+              />
+              <Button 
+                type="submit" 
+                variant="default" 
+                size="icon"
+                className="bg-primary text-primary-foreground hover:bg-primary/80 text-xs uppercase tracking-wider shrink-0 h-10 w-10 rounded-r-sm rounded-l-none"
+                aria-label="Subscribe to newsletter"
+              >
+                <Send className="h-4 w-4"/>
+              </Button>
+            </form>
+          </div>
+
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="font-serif text-sm font-medium mb-4 uppercase tracking-wider text-foreground/90">{section.title}</h3>
+              <h3 className="font-serif text-sm font-semibold mb-4 uppercase tracking-wider text-foreground">{section.title}</h3>
               <ul className="space-y-2.5">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-xs text-foreground/70 hover:text-foreground transition-colors">
+                    <Link href={link.href} className="text-xs text-foreground/70 hover:text-primary transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -56,38 +96,20 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-          <div>
-            <h3 className="font-serif text-sm font-medium mb-4 uppercase tracking-wider text-foreground/90">Newsletter</h3>
-            <p className="text-xs text-foreground/70 mb-4">Be the first to know about new collections and exclusive events.</p>
-            <form className="flex space-x-2">
-              <Input 
-                type="email" 
-                placeholder="Your email address" 
-                className="bg-secondary/50 border-foreground/20 focus:border-foreground/50 focus:ring-foreground/50 text-xs placeholder:text-foreground/50 h-9" 
-              />
-              <Button 
-                type="submit" 
-                variant="outline" 
-                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground text-xs uppercase tracking-wider shrink-0 h-9 px-4"
-              >
-                Sign Up
-              </Button>
-            </form>
-          </div>
         </div>
 
-        <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-xs text-foreground/60 mb-4 md:mb-0 order-2 md:order-1">
-            &copy; {currentYear} {siteConfig.companyName}. All rights reserved.
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          <p className="text-xs text-foreground/60 text-center md:text-left">
+            &copy; {currentYear} {siteConfig.companyName}. All Rights Reserved.
           </p>
-          <div className="flex items-center space-x-2 order-1 md:order-2 mb-4 md:mb-0">
+          <div className="flex items-center space-x-3">
             {siteConfig.socialLinks.map((social) => {
               const Icon = iconComponents[social.name];
               if (!Icon) return null;
 
               return (
                 <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${siteConfig.companyName} on ${social.name}`}>
-                  <Button variant="ghost" size="icon" className="w-8 h-8 text-foreground/60 hover:text-foreground transition-colors">
+                  <Button variant="ghost" size="icon" className="w-8 h-8 text-foreground/60 hover:text-primary transition-colors">
                     <Icon className="h-4 w-4" />
                   </Button>
                 </Link>
