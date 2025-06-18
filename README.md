@@ -4,6 +4,8 @@
 
 This Next.js e-commerce starter project, crafted in Firebase Studio, showcases a sleek, minimalist design inspired by luxury brands. It boasts a dynamic product catalog with full customization, seamless multi-currency support, and AI-driven response suggestions for a smarter shopping experience.
 
+# Live Demo [Here](https://vsuqi.netlify.app/)
+
 ## Key Features
 
 *   **Modern & Responsive Design**: A clean, premium look and feel adaptable to all screen sizes.
